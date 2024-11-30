@@ -39,26 +39,41 @@
   },
   "types": "types/index.d.ts",
   "exports": {
-    "./element": "./lib/element.js",
-    ".": "./lib/index.js",
+    "./element": {
+      "types": "./types/element.d.ts",
+      "default": "./lib/element.js"
+    },
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./lib/index.js"
+    },
     "./stories/index.stories": "./src/stories/index.stories.tsx",
-    "./react": "./wrappers/react.js",
-    "./preact": "./wrappers/preact.js",
-    "./vue": "./wrappers/vue.js"
+    "./react": {
+      "types": "./wrapper/react.d.ts",
+      "default": "./wrapper/react.js"
+    },
+    "./preact": {
+      "types": "./wrapper/preact.d.ts",
+      "default": "./wrapper/preact.js"
+    },
+    "./vue": {
+      "types": "./wrapper/vue.d.ts",
+      "default": "./wrapper/vue.js"
+    }
   },
   "typesVersions": {
     "*": {
       "react": [
-        "wrappers/react.d.ts"
+        "wrapper/react.d.ts"
       ],
       "element": [
         "types/element.d.ts"
       ],
       "preact": [
-        "wrappers/preact.d.ts"
+        "wrapper/preact.d.ts"
       ],
       "vue": [
-        "wrappers/vue.d.ts"
+        "wrapper/vue.d.ts"
       ]
     }
   }
