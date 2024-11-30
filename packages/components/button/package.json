@@ -1,0 +1,65 @@
+{
+  "name": "@assemble-web/button",
+  "version": "1.0.0",
+  "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "dependencies": {
+    "atomico": "*"
+  },
+  "peerDependencies": {
+    "@atomico/react": "*",
+    "@atomico/vue": "*",
+    "atomico": "*"
+  },
+  "peerDependenciesMeta": {
+    "@atomico/react": {
+      "optional": true
+    },
+    "@atomico/vue": {
+      "optional": true
+    }
+  },
+  "files": [
+    "lib",
+    "types",
+    "wrappers"
+  ],
+  "scripts": {
+    "build:types": "tsc",
+    "build:compile": "library \"src/**/*\"",
+    "build:exports": "exports \"lib/**/*\" \"types/**/*\" --wrappers",
+    "build": "npm run build:types && npm run build:compile && npm run build:exports",
+    "working:types": "tsc --watch",
+    "working:compile": "library \"src/**/*\" --watch",
+    "working:exports": "exports \"lib/**/*\" \"types/**/*\" --wrappers --watch",
+    "dev": "npm run build:types; npm run build:compile; npm run working:types & npm run working:compile & npm run working:exports",
+    "prepublishOnly": "npm run build"
+  },
+  "types": "types/index.d.ts",
+  "exports": {
+    "./element": "./lib/element.js",
+    ".": "./lib/index.js",
+    "./stories/index.stories": "./src/stories/index.stories.tsx",
+    "./react": "./wrappers/react.js",
+    "./preact": "./wrappers/preact.js",
+    "./vue": "./wrappers/vue.js"
+  },
+  "typesVersions": {
+    "*": {
+      "react": [
+        "wrappers/react.d.ts"
+      ],
+      "element": [
+        "types/element.d.ts"
+      ],
+      "preact": [
+        "wrappers/preact.d.ts"
+      ],
+      "vue": [
+        "wrappers/vue.d.ts"
+      ]
+    }
+  }
+}

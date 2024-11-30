@@ -1,0 +1,43 @@
+{
+  "name": "assemble-web",
+  "workspaces": [
+    "packages/storybook",
+    "packages/components/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "run dev:* -p",
+    "build": "run start -w=storybook",
+    "dev:storybook": "npm run dev -w=storybook",
+    "dev:component": "npm run dev:storybook & npm run dev -w",
+    "build:storybook": "npm run build -w=storybook",
+    "create:component": "scaff component-template packages/components && npm i",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@atomico/exports": "^1.6.0",
+    "@atomico/run": "^0.8.4",
+    "@atomico/scaffold": "^2.9.3",
+    "@atomico/tsconfig": "^1.1.2",
+    "@atomico/vite": "^2.9.2",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "atomico": "^1.71.1",
+    "eslint": "^8",
+    "eslint-plugin-sort-keys-custom-order-fix": "^0.1.1",
+    "husky": "^7.0.1",
+    "prettier": "2.3.2",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.9"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix --format stylish"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
